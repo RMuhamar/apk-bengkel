@@ -3,19 +3,19 @@ include_once 'includes/config.php';
 
 $config = new Config();
 $db = $config->getConnection();
-	
+
 if($_POST){
-	
+
 	include_once 'includes/login.inc.php';
 	$login = new Login($db);
 
 	$login->userid = $_POST['username'];
 	$login->passid = md5($_POST['password']);
-	
+
 	if($login->login()){
 		echo "<script>location.href='index.php'</script>";
 	}
-	
+
 	else{
 		echo "<script>alert('Gagal Total')</script>";
 	}
@@ -28,7 +28,7 @@ if($_POST){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>LUMAYAN MOTOR</title>
+    <title>HONDA AHASS</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@ if($_POST){
     <![endif]-->
   </head>
   <body>
-  
+
 	<nav class=" navbar navbar-default navbar-static-top">
 	  <div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -55,12 +55,12 @@ if($_POST){
 		<!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-  
+
     <div class="container">
 		<div class="row">
 		  <div class="col-xs-12 col-sm-4 col-md-4">&nbsp;</div>
 		  <div class="col-xs-12 col-sm-4 col-md-4">
-		  	
+
 		  	<div style="margin-top: 100px;" class="panel panel-default"><div class="panel-body">
 		  		<div class="text-center"><h4><img src="images/lumayan.png" class="img-responsive"></h4></div>
 		  		<form method="post">
@@ -75,7 +75,7 @@ if($_POST){
 				  <button type="submit" class="btn btn-primary">Masuk</button>
 				</form>
 		  	</div></div>
-		  	
+
 		  </div>
 		  <div class="col-xs-12 col-sm-4 col-md-4">&nbsp;</div>
 		</div>

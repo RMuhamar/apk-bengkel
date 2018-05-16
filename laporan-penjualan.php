@@ -8,9 +8,9 @@ if(!isset($_SESSION['nama_pengguna'])){
 define('_MPDF_PATH','MPDF57/');
 include(_MPDF_PATH . "mpdf.php");
 $mpdf=new mPDF('utf-8', 'A4'); // Create new mPDF Document
- 
+
 //Beginning Buffer to save PHP variables and HTML tags
-ob_start(); 
+ob_start();
 ?>
 <!--sekarang Tinggal Codeing seperti biasanya. HTML, CSS, PHP tidak masalah.-->
 <!--CONTOH Code START-->
@@ -33,22 +33,22 @@ p{
 h4, h1, h5, h2{
 	text-align:center;
 	padding-top:inherit;
-	
+
 }
 table {
    border-collapse:collapse;
    width:100%;
 }
- 
+
 table, td, th {
    border:1px solid black;
 }
- 
+
 tbody tr:nth-child(odd) {
    background-color: #ccc;
 }
 </style>
-<h2>LUMAYAN MOTOR</h2>
+<h2>HONDA AHASS</h2>
 <h5>Jl, Ciwado No.144 Desa Cikadu, Kec. Nusaherang  Kuningan (0232)8880558</h5>
 <hr>
 
@@ -72,7 +72,7 @@ tbody tr:nth-child(odd) {
 
 </tr>
 </thead>
-<?php 
+<?php
 $sql=mysql_query("SELECT * FROM 213_pembelian JOIN 213_mekanik ON 213_pembelian.id_mekanik=213_mekanik.id_mekanik JOIN 213_sparepart ON 213_pembelian.id_sparepart=213_sparepart.id_sparepart ORDER BY id_pembelian ASC");
 while($data=mysql_fetch_assoc($sql)){
 ?>
@@ -83,14 +83,14 @@ while($data=mysql_fetch_assoc($sql)){
 <td><?php echo $data['harga']?></td>
 <td><?php echo $data['harga_jasa']?></td>
 <td>
-<?php 
+<?php
 	$hs= $data['harga'];
 	$qt= $data['qty'];
 	$hj= $data['harga_jasa'];
 	$tot = ($hs * $qt) + $hj;
 	echo"$tot";
 
-			
+
 			?>
 </td>
 <td><?php echo $data['tgl_beli']?></td>
@@ -101,7 +101,7 @@ while($data=mysql_fetch_assoc($sql)){
 </table>
 
 <!--CONTOH Code END-->
- 
+
 <?php
 $html = ob_get_contents(); //Proses untuk mengambil hasil dari OB..
 ob_end_clean();
