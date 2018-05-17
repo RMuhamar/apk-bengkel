@@ -55,8 +55,8 @@ class Mekanik{
 		
 		$this->id = $row['id_mekanik'];
 		$this->nama_mekanik = $row['nama_mekanik'];
-		$this->nama_mekanik = $row['no'];
-		$this->nama_mekanik = $row['alamat'];
+		$this->no = $row['no_tlp'];
+		$this->alamat = $row['alamat'];
 
 	}
 	
@@ -66,7 +66,7 @@ class Mekanik{
 		$query = "UPDATE 
 					" . $this->table_name . " 
 				SET 
-					nama_mekanik = :nama_mekanik, 
+					nama_mekanik = :nama_mekanik,
 					no_tlp = :no,
 					alamat = :alamat	
 				WHERE
@@ -75,7 +75,7 @@ class Mekanik{
 		$stmt = $this->conn->prepare($query);
 
 		$stmt->bindParam(':nama_mekanik', $this->nama_mekanik);
-		$stmt->bindParam(':no_tlp', $this->no);
+		$stmt->bindParam(':no', $this->no);
 		$stmt->bindParam(':alamat', $this->alamat);
 		$stmt->bindParam(':id', $this->id);
 		

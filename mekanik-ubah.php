@@ -12,7 +12,8 @@ $eks->readOne();
 if($_POST){
 
 	$eks->nama_mekanik = $_POST['nama_mekanik'];
-
+	$eks->no = $_POST['nomor'];
+	$eks->alamat = $_POST['alamat'];
 
 
 	
@@ -53,6 +54,10 @@ window.onload=function(){
 				  <div class="form-group">
 				    <label for="nama_kader">Nama Mekanik</label>
 				    <input type="text" class="form-control" id="nama_mekanik" name="nama_mekanik" value="<?php echo $eks->nama_mekanik; ?>">
+				    <label for="nama_kader">Nomor Telepon</label>
+				    <input type="text" class="form-control" id="nama_mekanik" name="nomor" value="<?php echo $eks->no; ?>">
+				    <label for="nama_kader">Alamat</label>
+				    <input type="text" class="form-control" id="nama_mekanik" name="alamat" value="<?php echo $eks->alamat; ?>">
 				  </div>
 				  
 				
