@@ -6,7 +6,8 @@ if($_POST){
 	$eks = new Mekanik($db);
 
 	$eks->nama_mekanik = $_POST['nama_mekanik'];
-
+	$eks->no = $_POST['no'];
+	$eks->alamat = $_POST['alamat'];
 	
 	if($eks->insert()){
 ?>
@@ -51,6 +52,10 @@ window.onload=function(){
 				  <div class="form-group">
 				    <label for="nama_mekanik">Nama Mekanik</label>
 				    <input type="text" class="form-control" id="nama_mekanik" name="nama_mekanik" required>
+				    <label for="nama_mekanik">No Telepon</label>
+				    <input type="number" class="form-control" id="nama_mekanik" name="no" required>
+				    <label for="nama_mekanik">Alamat</label>
+				    <input type="text" class="form-control" id="nama_mekanik" name="alamat" required>
 				  </div>
 			
 				<input type="hidden" id="tgllk" value="" name="tgllk"/>

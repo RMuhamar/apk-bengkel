@@ -1,4 +1,4 @@
-<footer class="text-center">&copy; 2015</footer>
+<footer class="text-center">&copy; 2018</footer>
 	</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

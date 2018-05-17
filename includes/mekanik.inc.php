@@ -6,6 +6,8 @@ class Mekanik{
   
   public $id;
   public $nama_mekanik;
+  public $no;
+  public $alamat;
 
 
 
@@ -17,10 +19,11 @@ class Mekanik{
   
  function insert(){
 		
-		$query = "insert into ".$this->table_name." values('',?)";
+		$query = "insert into ".$this->table_name." values('',?,?,?)";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(1, $this->nama_mekanik);
-
+		$stmt->bindParam(2, $this->no);
+		$stmt->bindParam(3, $this->alamat);
 		
 		if($stmt->execute()){
 			return true;
@@ -52,6 +55,8 @@ class Mekanik{
 		
 		$this->id = $row['id_mekanik'];
 		$this->nama_mekanik = $row['nama_mekanik'];
+		$this->nama_mekanik = $row['no'];
+		$this->nama_mekanik = $row['alamat'];
 
 	}
 	
@@ -61,14 +66,17 @@ class Mekanik{
 		$query = "UPDATE 
 					" . $this->table_name . " 
 				SET 
-					nama_mekanik = :nama_mekanik 
-
+					nama_mekanik = :nama_mekanik, 
+					no_tlp = :no,
+					alamat = :alamat	
 				WHERE
 					id_mekanik = :id";
 
 		$stmt = $this->conn->prepare($query);
 
 		$stmt->bindParam(':nama_mekanik', $this->nama_mekanik);
+		$stmt->bindParam(':no_tlp', $this->no);
+		$stmt->bindParam(':alamat', $this->alamat);
 		$stmt->bindParam(':id', $this->id);
 		
 		// execute the query
