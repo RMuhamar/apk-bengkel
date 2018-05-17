@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Agu 2016 pada 02.47
--- Versi Server: 5.6.26
--- PHP Version: 5.6.12
+-- Generation Time: May 17, 2018 at 05:53 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `project213`
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `213_konsumen`
+-- Table structure for table `213_konsumen`
 --
 
 CREATE TABLE IF NOT EXISTS `213_konsumen` (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `213_konsumen` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `213_konsumen`
+-- Dumping data for table `213_konsumen`
 --
 
 INSERT INTO `213_konsumen` (`id_konsumen`, `nama_konsumen`) VALUES
@@ -41,28 +41,31 @@ INSERT INTO `213_konsumen` (`id_konsumen`, `nama_konsumen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `213_mekanik`
+-- Table structure for table `213_mekanik`
 --
 
 CREATE TABLE IF NOT EXISTS `213_mekanik` (
   `id_mekanik` int(5) unsigned NOT NULL,
-  `nama_mekanik` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `nama_mekanik` varchar(50) DEFAULT NULL,
+  `no_tlp` varchar(15) NOT NULL,
+  `alamat` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `213_mekanik`
+-- Dumping data for table `213_mekanik`
 --
 
-INSERT INTO `213_mekanik` (`id_mekanik`, `nama_mekanik`) VALUES
-(1, 'Triwahyudi '),
-(2, 'Emon semprani'),
-(3, 'Ujang Bolon'),
-(4, 'Suryanto');
+INSERT INTO `213_mekanik` (`id_mekanik`, `nama_mekanik`, `no_tlp`, `alamat`) VALUES
+(1, 'Triwahyudi ', '0', ''),
+(2, 'Emon semprani', '0', ''),
+(3, 'Ujang Bolon', '0', ''),
+(4, 'Suryanto', '0', ''),
+(5, 'Rayza Muhamar', '099866554443', 'pondok petir');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `213_pembelian`
+-- Table structure for table `213_pembelian`
 --
 
 CREATE TABLE IF NOT EXISTS `213_pembelian` (
@@ -75,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `213_pembelian` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `213_pembelian`
+-- Dumping data for table `213_pembelian`
 --
 
 INSERT INTO `213_pembelian` (`id_pembelian`, `id_mekanik`, `id_sparepart`, `qty`, `harga_jasa`, `tgl_beli`) VALUES
@@ -96,7 +99,7 @@ INSERT INTO `213_pembelian` (`id_pembelian`, `id_mekanik`, `id_sparepart`, `qty`
 (32, 4, 7, 2, '10000', '2016-08-27');
 
 --
--- Trigger `213_pembelian`
+-- Triggers `213_pembelian`
 --
 DELIMITER $$
 CREATE TRIGGER `jual` AFTER INSERT ON `213_pembelian`
@@ -110,7 +113,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `213_pengguna`
+-- Table structure for table `213_pengguna`
 --
 
 CREATE TABLE IF NOT EXISTS `213_pengguna` (
@@ -118,20 +121,21 @@ CREATE TABLE IF NOT EXISTS `213_pengguna` (
   `nama_pengguna` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `213_pengguna`
+-- Dumping data for table `213_pengguna`
 --
 
 INSERT INTO `213_pengguna` (`id_pengguna`, `nama_pengguna`, `username`, `password`) VALUES
 (1, 'Rendy Permana ', 'kasir', 'c7911af3adbd12a035b289556d96470a'),
-(2, 'Mulyadi P Tamsir', 'kasir2', '8c86013d8ba23d9b5ade4d6463f81c45');
+(2, 'Mulyadi P Tamsir', 'kasir2', '8c86013d8ba23d9b5ade4d6463f81c45'),
+(3, 'Rayza Muhamar', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `213_sparepart`
+-- Table structure for table `213_sparepart`
 --
 
 CREATE TABLE IF NOT EXISTS `213_sparepart` (
@@ -142,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `213_sparepart` (
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `213_sparepart`
+-- Dumping data for table `213_sparepart`
 --
 
 INSERT INTO `213_sparepart` (`id_sparepart`, `sparepart`, `stock`, `harga`) VALUES
@@ -216,7 +220,7 @@ ALTER TABLE `213_konsumen`
 -- AUTO_INCREMENT for table `213_mekanik`
 --
 ALTER TABLE `213_mekanik`
-  MODIFY `id_mekanik` int(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_mekanik` int(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `213_pembelian`
 --
@@ -226,7 +230,7 @@ ALTER TABLE `213_pembelian`
 -- AUTO_INCREMENT for table `213_pengguna`
 --
 ALTER TABLE `213_pengguna`
-  MODIFY `id_pengguna` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_pengguna` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `213_sparepart`
 --
